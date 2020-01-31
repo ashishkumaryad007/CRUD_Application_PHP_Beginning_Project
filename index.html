@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script>
+function validateForm() {
+// Validate the Name
+  var q=document.Myinfo.E_Name.value
+  var ptt = /^[A-Za-z]+$/;
+  if(q==""){
+    alert("Please Enter Your Name");      //The pop up alert for an invalid E_Name 
+    document.Myinfo.E_Name.focus();
+    return false;
+    }
+  if(!(q.match(ptt))){
+    alert("Please Enter Only Characters");    //The pop up alert for an invalid E_Name
+    document.Myinfo.E_Name.select();
+    return false;
+    }
+  if ((q.length < 4) || (q.length > 15)){
+    alert("Your Character must be 5 to 15 Character");    //The pop up alert for an invalid E_Name 
+    document.Myinfo.E_Name.select();
+    return false;
+    }
+// Validation of Email Id
+  var mail= /^\w+([\.-]?\w+)*@[A-Za-z]*(\.\w{2,3})+$/;
+  if(document.Myinfo.Email.value.match(mail)){
+    document.Myinfo.Email.focus();
+    return true;
+  }
+  else{
+    alert("You have entered an invalid email address!");    //The pop up alert for an invalid email address
+    document.Myinfo.Email.focus();
+    return false;
+  }
+//validate the mobile no.
+  var t=document.Myinfo.Mobile.value
+  if (t == "") {                        
+    window.alert("Please enter your Valid Mobile number."); //The pop up alert for an invalid Mobile Number
+    document.Myinfo.Mobile.focus(); 
+    return false; 
+    }
+  if(isNaN(t)||t.indexOf(" ")!=-1){
+    alert("Enter numeric value")      //The pop up alert for an invalid Mobile number
+    return false; 
+    }
+  if ((t.length<10)||(t.length>10)){
+    alert("enter 10 characters");     //The pop up alert for an invalid mebile number
+    return false;
+    }
+}
+  </script>
+  <style>
+.container {
+  border-radius: 6px;
+  background-color:#f2f2f2;
+  padding-right: 20px;
+  max-width:500px;
+  width: 100%;
+  margin:0 auto;
+  position:relative;
+  
+}
+</style>
+</head>
+<body>
+<div class="container" >
+<h1>MyInfo Form</h1>
+<p>Please fill in your information </p>
+</div>
+<div class="container" >
+<form name="Myinfo" action="conn.php" onsubmit="return validateForm()" method="post">  
+   E_Name:<input type = "text"  name = "E_Name"   placeholder="name"/><br><br>
+   Email:<input type ="email"   name="Email"  placeholder="e.g. hello@contact.net" size="46"/><br><br>
+   Mobile:<input type="text"    name="Mobile" placeholder="##########"
+    pattern="[0-9]{3}[0-9]{3}[0-9]{4}" size="46"/>
+<br><br>
+    <p><input type="submit" value="send" name="Submit"><input type="reset" value="Reset" name="Reset">
+      <button > <a href="all_data.php">All Info</a> </button>  
+
+ </form>
+ </div>
+</body>
+</html>
